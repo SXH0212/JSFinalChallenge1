@@ -24,6 +24,20 @@ btnAdd.addEventListener('click', function () {
   listFooter.textContent = `${willDoneCount} 個待完成項目`;
 })
 
+// // 刪除待辦
+// todoList.addEventListener('click', function (e) {
+//   if (e.target.getAttribute('class') === 'delete') {
+//     let dataIndex = parseInt(e.target.getAttribute('data-a'));
+//     if (todoData[dataIndex].isDone === false) {
+//       willDoneCount--;
+//     }
+//     todoData.splice(dataIndex, 1);
+
+
+//   }
+// })
+
+
 // 全部
 allTodo.addEventListener('click', function () {
   renderData();
@@ -39,7 +53,7 @@ willDone.addEventListener('click', function () {
         <input type="checkbox" data-index=${index}/>
         <span>${item.todoText}</span>
       </label>
-      <a href="#" class="delete"></a>
+      <a href="#" class="delete" data-a=${index}></a>
     </li>`;
     }
   });
@@ -56,7 +70,7 @@ done.addEventListener('click', function () {
         <input type="checkbox" data-index=${index} checked/>
         <span>${item.todoText}</span>
       </label>
-      <a href="#" class="delete"></a>
+      <a href="#" class="delete" data-a=${index}></a>
     </li>`;
     }
   });
@@ -73,6 +87,13 @@ todoList.addEventListener('click', function (e) {
     } else {
       willDoneCount--;
     }
+  } else if (e.target.getAttribute('class') === 'delete') {
+    let dataIndex = parseInt(e.target.getAttribute('data-a'));
+    if (todoData[dataIndex].isDone === false) {
+      willDoneCount--;
+    }
+    todoData.splice(dataIndex, 1);
+    renderData();
   }
   listFooter.textContent = `${willDoneCount} 個待完成項目`;
 })
@@ -86,7 +107,7 @@ function renderData() {
         <input type="checkbox" data-index=${index} checked/>
         <span>${item.todoText}</span>
       </label>
-      <a href="#" class="delete"></a>
+      <a href="#" class="delete" data-a=${index}></a>
     </li>`;
     } else {
       str += `<li>
@@ -94,7 +115,7 @@ function renderData() {
         <input type="checkbox" data-index=${index}/>
         <span>${item.todoText}</span>
       </label>
-      <a href="#" class="delete"></a>
+      <a href="#" class="delete" data-a=${index}></a>
     </li>`;
     }
   });
