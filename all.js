@@ -24,18 +24,8 @@ btnAdd.addEventListener('click', function () {
   listFooter.textContent = `${willDoneCount} 個待完成項目`;
 })
 
-// // 刪除待辦
-// todoList.addEventListener('click', function (e) {
-//   if (e.target.getAttribute('class') === 'delete') {
-//     let dataIndex = parseInt(e.target.getAttribute('data-a'));
-//     if (todoData[dataIndex].isDone === false) {
-//       willDoneCount--;
-//     }
-//     todoData.splice(dataIndex, 1);
 
 
-//   }
-// })
 
 
 // 全部
@@ -77,7 +67,7 @@ done.addEventListener('click', function () {
   todoList.innerHTML = str;
 })
 
-// toggle是否完成
+// toggle是否完成，含刪除待辦功能
 todoList.addEventListener('click', function (e) {
   if (e.target.getAttribute('type') === 'checkbox') {
     let dataIndex = parseInt(e.target.getAttribute('data-index'));
